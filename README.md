@@ -20,8 +20,16 @@ This is a cleaned-up C# badge-maker exercise focused on basic console input, val
 
 ## Run locally
 
+Interactive mode:
+
 ```bash
 dotnet run
+```
+
+Sample/demo mode:
+
+```bash
+dotnet run -- --sample
 ```
 
 Enter employees when prompted. Leave first name blank to finish and generate the CSV.
@@ -56,7 +64,10 @@ ID,Name,PhotoUrl
 
 ```bash
 dotnet build
+dotnet run -- --sample
 ```
+
+The GitHub Actions workflow runs restore, release build, sample export, and CSV existence checks on every push/PR.
 
 ## Project notes
 

@@ -28,6 +28,16 @@ namespace CatWorx.BadgeMaker
       return employees;
     }
 
+    static List<Employee> GetSampleEmployees()
+    {
+      return new List<Employee>
+      {
+        new Employee("Ada", "Lovelace", 101, "https://example.com/ada.png"),
+        new Employee("Grace", "Hopper", 102, "https://example.com/grace.png"),
+        new Employee("Katherine", "Johnson", 103, "https://example.com/katherine.png"),
+      };
+    }
+
     static string ReadRequiredText(string prompt)
     {
       while (true)
@@ -59,7 +69,8 @@ namespace CatWorx.BadgeMaker
 
     static void Main(string[] args)
     {
-      List<Employee> employees = GetEmployees();
+      bool sampleMode = Array.Exists(args, arg => arg == "--sample");
+      List<Employee> employees = sampleMode ? GetSampleEmployees() : GetEmployees();
 
       if (employees.Count == 0)
       {
