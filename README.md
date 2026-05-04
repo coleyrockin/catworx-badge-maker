@@ -2,11 +2,16 @@
 
 A small C# console app that collects employee details and exports badge data to `data/employees.csv`.
 
+## Why it exists
+
+This is a cleaned-up C# badge-maker exercise focused on basic console input, validation, object modeling, and CSV export.
+
 ## Features
 
 - Prompts for employee first name, last name, ID, and photo URL
+- Validates required fields and positive numeric IDs
 - Prints entered employees in a readable console table
-- Writes a CSV file with badge-ready employee data
+- Writes CSV-safe badge data to `data/employees.csv`
 - Creates the `data/` folder automatically when needed
 
 ## Requirements
@@ -21,9 +26,21 @@ dotnet run
 
 Enter employees when prompted. Leave first name blank to finish and generate the CSV.
 
-## Output
+## Example session
 
-The app writes:
+```text
+Enter first name (leave empty to finish): Ada
+Enter last name: Lovelace
+Enter ID: 101
+Enter photo URL: https://example.com/ada.png
+Enter first name (leave empty to finish):
+ID          Name                  Photo URL
+------------------------------------------------------------
+101         Ada Lovelace          https://example.com/ada.png
+Badge data written to data/employees.csv
+```
+
+## Output
 
 ```text
 data/employees.csv
@@ -35,6 +52,12 @@ CSV columns:
 ID,Name,PhotoUrl
 ```
 
+## Verify
+
+```bash
+dotnet build
+```
+
 ## Project notes
 
-This project started as a C# badge-maker exercise. The repo has been cleaned so generated build artifacts (`bin/`, `obj/`) are ignored and the source files are the main tracked project assets.
+Generated build artifacts (`bin/`, `obj/`) are ignored so the repo stays source-focused.

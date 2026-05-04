@@ -18,13 +18,9 @@ namespace CatWorx.BadgeMaker
           break;
         }
 
-        Console.Write("Enter last name: ");
-        string lastName = Console.ReadLine()?.Trim() ?? "";
-
+        string lastName = ReadRequiredText("Enter last name: ");
         int id = ReadEmployeeId();
-
-        Console.Write("Enter photo URL: ");
-        string photoUrl = Console.ReadLine()?.Trim() ?? "";
+        string photoUrl = ReadRequiredText("Enter photo URL: ");
 
         employees.Add(new Employee(firstName, lastName, id, photoUrl));
       }
@@ -32,17 +28,32 @@ namespace CatWorx.BadgeMaker
       return employees;
     }
 
+    static string ReadRequiredText(string prompt)
+    {
+      while (true)
+      {
+        Console.Write(prompt);
+        string value = Console.ReadLine()?.Trim() ?? "";
+        if (value != "")
+        {
+          return value;
+        }
+
+        Console.WriteLine("This field is required.");
+      }
+    }
+
     static int ReadEmployeeId()
     {
       while (true)
       {
         Console.Write("Enter ID: ");
-        if (Int32.TryParse(Console.ReadLine(), out int id))
+        if (Int32.TryParse(Console.ReadLine(), out int id) && id > 0)
         {
           return id;
         }
 
-        Console.WriteLine("Please enter a valid whole-number ID.");
+        Console.WriteLine("Please enter a positive whole-number ID.");
       }
     }
 
