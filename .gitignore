@@ -1,0 +1,18 @@
+# Build output
+bin/
+obj/
+
+# User/local files
+*.user
+*.suo
+.vs/
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Generated app data
+# Keep sample data intentionally tracked when useful; ignore ad-hoc exports.
+data/*.tmp
+data/*.bak

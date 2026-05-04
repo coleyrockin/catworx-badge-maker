@@ -8,37 +8,57 @@ namespace CatWorx.BadgeMaker
     static List<Employee> GetEmployees()
     {
       List<Employee> employees = new List<Employee>();
+
       while (true)
       {
-        // Move the initial prompt inside the loop, so it repeats for each employee
-        Console.WriteLine("Enter first name (leave empty to exit): ");
-
-        // change input to firstName
-        string firstName = Console.ReadLine() ?? "";
+        Console.Write("Enter first name (leave empty to finish): ");
+        string firstName = Console.ReadLine()?.Trim() ?? "";
         if (firstName == "")
         {
           break;
         }
 
-        // add a Console.ReadLine() for each value
         Console.Write("Enter last name: ");
-        string lastName = Console.ReadLine() ?? "";
-        Console.Write("Enter ID: ");
-        int id = Int32.Parse(Console.ReadLine() ?? "");
-        Console.Write("Enter Photo URL:");
-        string photoUrl = Console.ReadLine() ?? "";
-        Employee currentEmployee = new Employee(firstName, lastName, id, photoUrl);
-        employees.Add(currentEmployee);
+        string lastName = Console.ReadLine()?.Trim() ?? "";
+
+        int id = ReadEmployeeId();
+
+        Console.Write("Enter photo URL: ");
+        string photoUrl = Console.ReadLine()?.Trim() ?? "";
+
+        employees.Add(new Employee(firstName, lastName, id, photoUrl));
       }
 
       return employees;
     }
 
+    static int ReadEmployeeId()
+    {
+      while (true)
+      {
+        Console.Write("Enter ID: ");
+        if (Int32.TryParse(Console.ReadLine(), out int id))
+        {
+          return id;
+        }
+
+        Console.WriteLine("Please enter a valid whole-number ID.");
+      }
+    }
+
     static void Main(string[] args)
     {
       List<Employee> employees = GetEmployees();
+
+      if (employees.Count == 0)
+      {
+        Console.WriteLine("No employees entered. Nothing to export.");
+        return;
+      }
+
       Util.PrintEmployees(employees);
       Util.MakeCSV(employees);
+      Console.WriteLine("Badge data written to data/employees.csv");
     }
   }
 }

@@ -2,10 +2,6 @@ namespace CatWorx.BadgeMaker
 {
   class Employee
   {
-    private string FirstName;
-    private string LastName;
-    private int Id;
-    private string PhotoUrl;
     public Employee(string firstName, string lastName, int id, string photoUrl)
     {
       FirstName = firstName;
@@ -13,20 +9,15 @@ namespace CatWorx.BadgeMaker
       Id = id;
       PhotoUrl = photoUrl;
     }
+
+    public string FirstName { get; }
+    public string LastName { get; }
+    public int Id { get; }
+    public string PhotoUrl { get; }
+
     public string GetFullName()
     {
-      return FirstName + " " + LastName;
-    }
-
-    public int GetId()
-    {
-      return Id;
-    }
-
-    public string GetPhotoUrl()
-    {
-      return PhotoUrl;
-
+      return $"{FirstName} {LastName}";
     }
   }
 }
