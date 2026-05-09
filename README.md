@@ -40,11 +40,11 @@ Enter employees when prompted. Leave first name blank to finish and generate the
 Enter first name (leave empty to finish): Ada
 Enter last name: Lovelace
 Enter ID: 101
-Enter photo URL: https://example.com/ada.png
+Enter photo URL: photo-url
 Enter first name (leave empty to finish):
 ID          Name                  Photo URL
 ------------------------------------------------------------
-101         Ada Lovelace          https://example.com/ada.png
+101         Ada Lovelace          photo-url
 Badge data written to data/employees.csv
 ```
 

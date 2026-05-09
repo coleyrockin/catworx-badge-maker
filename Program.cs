@@ -32,9 +32,9 @@ namespace CatWorx.BadgeMaker
     {
       return new List<Employee>
       {
-        new Employee("Ada", "Lovelace", 101, "https://example.com/ada.png"),
-        new Employee("Grace", "Hopper", 102, "https://example.com/grace.png"),
-        new Employee("Katherine", "Johnson", 103, "https://example.com/katherine.png"),
+        new Employee("Ada", "Lovelace", 101, "photo-url"),
+        new Employee("Grace", "Hopper", 102, "photo-url"),
+        new Employee("Katherine", "Johnson", 103, "photo-url"),
       };
     }
 
